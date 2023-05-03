@@ -6,3 +6,4 @@ admin.site.register(Category)
 admin.site.register(Product)
 admin.site.register(Promocode)
 admin.site.register(Order)
+
