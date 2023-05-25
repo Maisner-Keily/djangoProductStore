@@ -1,0 +1,35 @@
+<nav class="nav">
+    <div class="container">
+        <div class="nav__wrap">
+            <div class="nav__links">
+                <div class="nav__logo">
+                    {% include 'logo.html' %}
+                </div>
+                <ul class="nav__ul">
+                    {% for product in products %}
+                        <li class="nav__li">
+                            <a href="{% url 'product' id=product.id %}" class="nav__link">{{ product.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="nav__buttons communicate">
+                <a class="communicate__burger" onclick="toggle_menu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </a>
+                <a class="communicate__inst btn btn-t1 btn-t1-hover">
+                    <span>Instagram</span>
+                </a>
+                <a class="communicate__chat btn btn-t1 btn-t1-hover">
+                    <span>
+                        <svg width="25" height="22" viewBox="0 0 25 22">
+                            <path d="M5.94324 12.7317L8.92822 20.1605L12.8143 16.2917L19.4771 21.5639L24.1685 0.563934L0.168457 10.5163L5.94324 12.7317ZM17.3104 6.58904L9.96442 13.2596L9.04944 16.6927L7.35919 12.4851L17.3104 6.58904Z" fill="inherit"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

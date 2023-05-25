@@ -1,0 +1,118 @@
+<div class="comment">
+    <div>
+        <div class="comment__author philosopher">
+            {{comment.name}}
+        </div>
+        <div class="comment__score">
+            <div class="comment__effect">
+                <div>Эффект</div>
+                <div class="comment__score_num">
+                    {% if comment.effect > 0 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                    {% if comment.effect > 1 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                    {% if comment.effect > 2 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                    {% if comment.effect > 3 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                    {% if comment.effect > 4 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="comment__delivery">
+                <div>Доставка</div>
+                <div class="comment__score_num">
+                    {% if comment.delivery > 0 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                    {% if comment.delivery > 1 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                    {% if comment.delivery > 2 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                    {% if comment.delivery > 3 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                    {% if comment.delivery > 4 %}
+                        {% include 'score.html' with color='#FFEB85' %}
+                    {% else %}
+                        {% if comment.border %}
+                                {% include 'score.html' with border=true %}
+                            {% else %}
+                                {% include 'score.html' with color='#CEF7EE' %}
+                            {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="comment__product philosopher">
+            {{comment.product}}
+        </div>
+        <div class="comment__text">
+            {{comment.text}}
+        </div>
+    </div>
+</div>

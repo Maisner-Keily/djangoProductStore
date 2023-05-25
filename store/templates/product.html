@@ -1,0 +1,20 @@
+<div class="product__wrapper">
+    <div class="product product{{product.id}}" style='background-color: {{product.bgColor}};'>
+        <div class="product__photo">
+            <img src="{{product.image}}" alt="{{product.name}}">
+        </div>
+        <div class="product__content">
+            <div class="product__features">
+                <div class="product__feature">Красота</div>
+                <div class="product__feature">Очищение</div>
+            </div>
+            <h3 class="product__title philosopher">
+                <a href="{% url 'product' id=product.id %}">{{ product.name }}</a>
+            </h3>
+            <div class="product__subtitle">
+                {{ product.shortDescription }}
+            </div>
+            <div class="product__price">{{ product.price }} руб</div>
+        </div>
+    </div>
+</div>

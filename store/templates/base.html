@@ -1,0 +1,136 @@
+{% load static %}
+{# {% import 'comment.html' as comment_shab %} #}
+{# {% import 'cart_item.html' as cart_item %} #}
+
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+    {% block styles %}
+    {% endblock %}
+    <script>
+        function set_body_height(height) {
+            document.body.style.maxHeight = height;
+        }
+
+
+        function set_select_value(value) {
+            document.getElementById('capacity')
+                    .setAttribute('value', value);
+            document.getElementsByClassName('form__select_value')[0]
+                    .getElementsByTagName('p')[0].innerHTML = value;
+        }
+
+
+        function set_cartItem_value(value, block) {
+            let input = block.parentNode.parentNode.parentNode.parentNode.getElementsByTagName('input')[0];
+            input.setAttribute('value', value);
+            const view_block = block.parentNode.parentNode.getElementsByTagName('p')[0];
+            view_block.innerHTML = value;
+        }
+
+
+        function item_select_click(block) {
+            const list = block.getElementsByClassName('item__select_list')[0];
+            list.classList.toggle('item__select_list-active');
+        }
+
+    </script>
+</head>
+
+<body id='body'>
+    <div class="menu">
+        <div class="menu__header">
+            {% include 'logo.html' %}
+            <a class="cart__exit" onclick='toggle_menu()'>
+                Закрыть 
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.45715 6.87132L9.50005 10.9142L10.9143 9.5L6.87137 5.45711L10.9143 1.41421L9.50005 0L5.45715 4.04289L1.41426 0L4.65512e-05 1.41421L4.04294 5.45711L4.673e-05 9.5L1.41426 10.9142L5.45715 6.87132Z" fill="#527C77"/>
+                </svg>          
+            </a>
+        </div>
+        <div class="menu__main">
+            {% if products %}
+                {% for product in products %}
+                    <a href="{% url 'product' id=product.id %}" class="menu__link">{{ product.name }}</a>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="menu__footer">
+            <a class="menu__inst">Instagram</a>
+            <a class="menu__chat">
+                <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.94324 12.7317L8.92822 20.1605L12.8143 16.2917L19.4771 21.5639L24.1685 0.563934L0.168457 10.5163L5.94324 12.7317ZM17.3104 6.58904L9.96442 13.2596L9.04944 16.6927L7.35919 12.4851L17.3104 6.58904Z" fill="#527C77"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <header>{% block header %} {% endblock %}</header>
+
+    {% block main %} {% endblock %}
+
+    <footer class="footer">
+        {% if comment %}
+            <section class="comments">
+                <div class="container">
+                    <div class="comments__wrap">
+                        <h3 class="comments__title philosopher">Отзывы</h3>
+                        <div class="comments__content">
+                            {% include 'comment.html' with comment=comment %}
+                        </div>
+                        <a class="comments__all btn btn-t1 btn-t1-hover" href="{% url 'surface' %}">
+                            <span>Читать все отзывы</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+        <div class="mainFooter">
+            <div class="container">
+                <div class="mainFooter__wrap">
+                    <div>
+                        <div class="mainFooter__logo">
+                            {% include 'logo.html' %}
+                        </div>
+                        <ul class="mainFooter__nav">
+                            {% for product in products %}
+                                <li>
+                                    <a href="{% url 'product' id=product.id %}">{{ product.name }}</a>
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="{% url 'buyDelivery' %}">Оплата и доставка</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'surface' %}">Отзывы</a>
+                            </li>
+                        </ul>
+                        <a class="mainFooter__inst btn btn-t1 btn-t1-hover">
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                    <div class="mainFooter__copy">
+                        <div>
+                            <a>Copyright 2020 © Pavitra</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block scripts %} {% endblock %}
+</body>
+
+</html>
